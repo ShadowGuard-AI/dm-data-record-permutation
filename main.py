@@ -3,6 +3,7 @@ import logging
 import random
 import pandas as pd
 import os
+import sys
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -16,7 +17,11 @@ def setup_argparse():
     parser.add_argument("output_file", help="Path to the output data file with permuted rows.")
     parser.add_argument("--file_type", choices=['csv', 'excel'], default='csv',
                         help="Type of the input file (csv or excel). Default is csv.")
-    parser.add_argument("--header", action="store_true", help="Specify if the input file has a header row. If not specified, assume header exists.")
+    # BooleanOptionalAction keeps the documented default honest: the file is
+    # assumed to have a header unless --no-header is passed. The old store_true
+    # flag defaulted to False, so a plain run read the header as a data row,
+    # shuffled it into the output, and wrote integer column names instead.
+    parser.add_argument("--header", action=argparse.BooleanOptionalAction, default=True, help="Specify if the input file has a header row. If not specified, assume header exists (use --no-header for headerless files).")
     parser.add_argument("--delimiter", type=str, default=",", help="Delimiter for CSV files. Default is ','.") # Added delimiter option
     
     return parser.parse_args()
@@ -103,6 +108,7 @@ def main():
     except Exception as e:
         logging.error(f"Data permutation failed: {e}")
         print(f"Data permutation failed. See logs for details.") # Inform user that an error occurred.
+        sys.exit(1)
 
 
 if __name__ == "__main__":
