@@ -1,3 +1,5 @@
+![Banner](banner.png)
+
 # dm-data-record-permutation
 Randomly reorders the rows (records) in a data file. This disrupts the original order, which may unintentionally reveal information or patterns, particularly when combined with other masking techniques. - Focused on Tools designed to generate or mask sensitive data with realistic-looking but meaningless values
 
