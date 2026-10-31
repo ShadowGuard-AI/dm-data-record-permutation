@@ -4,6 +4,7 @@ import random
 import pandas as pd
 import os
 import sys
+from pathlib import Path
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -23,22 +24,27 @@ def setup_argparse():
     # shuffled it into the output, and wrote integer column names instead.
     parser.add_argument("--header", action=argparse.BooleanOptionalAction, default=True, help="Specify if the input file has a header row. If not specified, assume header exists (use --no-header for headerless files).")
     parser.add_argument("--delimiter", type=str, default=",", help="Delimiter for CSV files. Default is ','.") # Added delimiter option
-    
+    parser.add_argument("--seed", type=int, default=None, help="Seed for a reproducible shuffle. If not specified, each run shuffles from fresh system randomness and produces a different order.")
+
     return parser.parse_args()
 
 
-def permute_data(input_file, output_file, file_type, header=True, delimiter=","):
+def permute_data(input_file, output_file, file_type, header=True, delimiter=",", seed=None):
     """
     Randomly reorders the rows of the input data file and saves the result to the output file.
-    
+
     Args:
         input_file (str): Path to the input data file.
         output_file (str): Path to the output data file.
         file_type (str): Type of the input file (csv or excel).
         header (bool): Indicates whether the input file has a header row.  Defaults to True.
         delimiter (str): Delimiter used in CSV files. Defaults to ","
+        seed (int, optional): Seed for a reproducible shuffle. Defaults to None, which shuffles from fresh system randomness.
     """
     try:
+        if Path(input_file).resolve() == Path(output_file).resolve():
+            raise ValueError("Output file is the same file as the input file. Refusing to overwrite the input in place.")
+
         # Input validation: Check if the input file exists
         if not os.path.isfile(input_file):
             raise FileNotFoundError(f"Input file not found: {input_file}")
@@ -63,8 +69,10 @@ def permute_data(input_file, output_file, file_type, header=True, delimiter=",")
             raise ValueError("Invalid file type. Choose 'csv' or 'excel'.")
 
 
-        # Permute the rows using pandas sample() with frac=1 and random_state for reproducibility
-        df_shuffled = df.sample(frac=1, random_state=42).reset_index(drop=True)
+        # Permute the rows using pandas sample() with frac=1. With no seed,
+        # random_state is None and each run shuffles from system randomness;
+        # a seed passed with --seed makes the run reproducible.
+        df_shuffled = df.sample(frac=1, random_state=seed).reset_index(drop=True)
 
         # Save the permuted data to the output file
         if file_type == 'csv':
@@ -97,7 +105,7 @@ def main():
     """
     try:
         args = setup_argparse()
-        permute_data(args.input_file, args.output_file, args.file_type, args.header, args.delimiter)
+        permute_data(args.input_file, args.output_file, args.file_type, args.header, args.delimiter, args.seed)
 
         # Example usage upon successful execution:
         print(f"Successfully permuted data from {args.input_file} to {args.output_file}")
