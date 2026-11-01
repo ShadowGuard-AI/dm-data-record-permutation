@@ -42,6 +42,9 @@ def permute_data(input_file, output_file, file_type, header=True, delimiter=",",
         seed (int, optional): Seed for a reproducible shuffle. Defaults to None, which shuffles from fresh system randomness.
     """
     try:
+        # I run the same path refusal before the existence check, so a call
+        # that names one file twice hears about that first, even when the
+        # file does not exist at all. The order of the errors is deliberate.
         if Path(input_file).resolve() == Path(output_file).resolve():
             raise ValueError("Output file is the same file as the input file. Refusing to overwrite the input in place.")
 
@@ -62,6 +65,9 @@ def permute_data(input_file, output_file, file_type, header=True, delimiter=",",
 
         elif file_type == 'excel':
             try:
+                # The excel branch takes neither the delimiter nor the
+                # header flag. With an excel input, --no-header is silently
+                # ignored and the first row is treated as the header anyway.
                 df = pd.read_excel(input_file)
             except Exception as e:
                  raise ValueError(f"Error reading Excel file: {e}")
@@ -72,6 +78,12 @@ def permute_data(input_file, output_file, file_type, header=True, delimiter=",",
         # Permute the rows using pandas sample() with frac=1. With no seed,
         # random_state is None and each run shuffles from system randomness;
         # a seed passed with --seed makes the run reproducible.
+        # Sampling without replacement at frac=1 is the invariant I want:
+        # every row comes out exactly once, nothing dropped and nothing
+        # duplicated, and each record stays whole while it moves. Dropping
+        # the old index is part of the point: the output carries no trace
+        # of where a row started, so the order cannot be undone from the
+        # output alone. Without the seed, it cannot be undone at all.
         df_shuffled = df.sample(frac=1, random_state=seed).reset_index(drop=True)
 
         # Save the permuted data to the output file
