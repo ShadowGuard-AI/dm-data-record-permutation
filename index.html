@@ -1,166 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dm Data Record Permutation: what it is, how it runs, where it stops</title>
-<meta name="description" content="Dm Data Record Permutation is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.">
-<style>
-:root {
-  --bg: #080c0a; --panel: #0d1410; --ink: #d9e8dd;
-  --mut: #111b15;
-  --acc: #57e389; --acc2: #e8b339;
-  --line: #0d1410;
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink);
-  font-family: ' Gill Sans', 'Segoe UI', sans-serif; line-height: 1.55; }
-code, pre, .mono { font-family: 'SF Mono', monospace; }
-a { color: var(--acc2); }
-.hero { padding: 3rem 6vw 1rem; }
-.hero img.banner { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; }
-.logo { width: 92px; height: 92px; border-radius: 18px;
-  border: 1px solid var(--line); }
-h1 { font-size: 2.4rem; margin: 0.4em 0 0.1em; }
-h2 { border-bottom: 2px solid var(--acc); padding-bottom: 0.2em;
-  margin-top: 2em; }
-.lede { font-size: 1.15rem; max-width: 62ch; }
-main { padding: 0 6vw 3rem; max-width: 1180px; margin: 0 auto; }
-.grid { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-.card { background: var(--panel); border: 1px solid var(--line);
-  border-radius: 12px; padding: 1rem 1.2rem; }
-.card.pop { animation: rise 0.7s ease both; }
-@keyframes rise { from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; } }
-pre.code { background: #101014; color: #e8e6df; padding: 1rem 1.2rem;
-  border-radius: 12px; overflow-x: auto; font-size: 0.86rem;
-  border-left: 5px solid var(--acc); }
-table { border-collapse: collapse; width: 100%; }
-td, th { border-bottom: 1px solid var(--line); padding: 0.45rem 0.6rem;
-  text-align: left; }
-.shots { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.shots img { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; background: #f4f1e8; }
-footer { padding: 2rem 6vw; border-top: 1px solid var(--line);
-  color: var(--mut); }
-.rail { display: flex; gap: 1.2rem; align-items: flex-start; }
-.rail nav { position: sticky; top: 1rem; min-width: 180px; }
-@media (max-width: 760px) { .rail { flex-direction: column; }
-  .rail nav { position: static; } }
-@media (prefers-reduced-motion: reduce) {
-  .card.pop { animation: none; } * { scroll-behavior: auto; } }
-</style>
-</head>
-<body class="layout-cards">
-<!-- This page exists for dm-data-record-permutation alone: the layout (index-cards),
-     the colors, and the type were picked for this project, not
-     shared with the other project pages. The code block below is
-     copied from the file it names, line for line. If it looks
-     plain, that is because the project is plain, and I would
-     rather the page match the project than dress it up. The one
-     thing I will not do here is oversell: what this project does
-     not do is stated on the page, not hidden from it. -->
-<header class="hero">
-  <img class="logo" src="assets/logo.png" alt="Dm Data Record Permutation logo">
-  <img class="banner" src="assets/banner.png" alt="">
-  <h1>Dm Data Record Permutation</h1>
-  <p class="mono"><a href="https://github.com/ShadowGuard-AI/dm-data-record-permutation">github.com/ShadowGuard-AI/dm-data-record-permutation</a></p>
-</header>
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><title>dm-data-record-permutation: The Alexandria Lighthouse Archive</title>
+<style>@font-face{font-family:Disp;src:url("fonts/Calligraffitti.ttf")}@font-face{font-family:Text;src:url("fonts/Barlow.ttf")}
+body{background:#d8d2c4;font-family:Text,sans-serif;color:#1d3328;margin:0}main{max-width:920px;margin:0 auto;padding:28px}
+h1,h2,h3{font-family:Disp,cursive;color:#7e231c}section{background:#e9e4d8;padding:18px 22px;margin:16px 0;border:2px solid #946a34;border-left:6px solid #a52d26}
+img{max-width:100%}button{background:#946a34;color:#f2eee6;border:2px solid #946a34;padding:10px 20px;font-family:Text,sans-serif}
+button:hover{background:#b08240;color:#fff}button:active{transform:translateY(2px)}button:focus{outline:3px double #946a34;outline-offset:3px}
+a{color:#1d3328}a::before{content:"\25AA  ";color:#946a34}a:hover::before{color:#a52d26}
+.label{display:inline-block;border:1px solid #946a34;padding:2px 8px;font-size:13px}pre{white-space:pre-wrap;background:#f2eee6;padding:14px}code{font-family:Text,sans-serif}.marker{color:#946a34}</style></head><body><main>
+<img src="intro-banner.png" alt="Introduction banner: a Pharos lamp large in slanted light, tray and tablets behind, harbour in shade, no writing">
+<h1>dm-data-record-permutation: The Alexandria Lighthouse Archive</h1>
+<p>Where this site names itself it uses the joined form dm-data-record-permutation: The Alexandria Lighthouse Archive, repo first, theme second. The page is a harbour log walked desk by desk.</p>
+<img src="logo.png" alt="Logo: a Pharos lamp alone, wide marble chamber, short bronze handle, red band at the base, cypress sprig at the foot, name below">
+<img src="banner.png" alt="Wordmark banner: harbour desk with lamp and blank log, mosaic tray, tessellated floors, tablets and storehouses, name carved on the desk front">
+<img src="scene.svg" alt="Animated scene in three bands">
+<p><span class="marker">&#9670;</span> Bronze tally marker</p>
+<div><button type="button">Shuffle the Rows</button></div>
+<p><span class="label">Shuffle Seed</span></p>
+<h3>Output Never Lands on Input</h3><h3>One Seed, One Order, Twice the Same</h3>
+<p>Buttons are small Pharos lamps in aged bronze over worn stone, roman red in their recesses, their rim a fine line of mosaic tesserae. At rest a button is matte bronze. A pointer over it wakes a candlelit warmth inside the lamp chamber. A press makes it settle the way a seal settles into wax: a short drop, a hold, a lift. The chamber never spins. The lamp never swings. Keyboard focus draws two thin bronze rules around the rim. Each link is headed by a small tessellated floor square, bronze while idle, roman red while pointed at. Cards are log desks. Marble white panels with bronze corners, headings as chronicle entries in Calligraffitti, text in Barlow. A card that records a finished shuffle carries a seal ring mark in its top corner. No other card does.</p>
+<section><h2>Desk one: the job</h2><p>Rows go in in one order and come out in another, shuffled at random, so the sequence itself stops telling tales about the people or events behind the rows. Randomly reorders the rows (records) in a data file. This disrupts the original order, which may unintentionally reveal information or patterns, particularly when combined with other masking techniques. The tool belongs to the family the README names: Tools designed to generate or mask sensitive data with realistic-looking but meaningless values.</p></section>
+<section><h2>Desk two: fetching, with one open repair</h2><p><code>git clone https://github.com/ShadowGuard-AI/dm-data-record-permutation</code></p><p>The line above is labelled a mend. It is a correction, not the original. The README address spells the organisation without its hyphen, as ShadowGuardAI, and a visitor who copied it character for character would land at the wrong house. This plate prints the hyphenated house name and says plainly why it differs.</p></section>
+<section><h2>Desk three: the shape of a run</h2><p><code>./dm-data-record-permutation [params]</code></p><p>That shape is all the source gives: program first, bracketed parameters after. No real file name is set beside it. No row from anyone's data is quoted. This plate leaves that space empty on purpose.</p></section>
+<section><h2>Desk four: the controls in README order</h2><p>File type first, printed as --file_type, and beside it the README's own admission, printed here as an absence: No description provided. Header next, printed as --header, with its printed rule that an undeclared file is assumed to have a header row: Specify if the input file has a header row. If not specified, assume header exists. Delimiter next, printed as --delimiter, for CSV files, and here this plate stops and points: the README sentence about its default breaks off mid phrase at Default is, value absent, so this plate prints no default at all rather than guess one. Seed last, printed as --seed, with its printed split: supply an integer and the shuffle repeats, leave it out and each run draws fresh system randomness and lands in a different order.</p></section>
+<section><h2>Desk five: sameness under a seed</h2><p>Two runs that share one seed and one input produce identical output. Two runs without a seed do not promise that. By default each run is a fresh random shuffle, so the permutation is not fixed and cannot be inverted from the row count alone. Pass --seed with an integer to make a run reproducible: two runs with the same seed and the same input produce identical output.</p></section>
+<section><h2>Desk six: the guard on the output path</h2><p>The output file must not be the input file. If the resolved output path equals the resolved input path, the run refuses at exit 1 before any write, including when the same file is named through a ./ alias or a symlink. Output may not resolve to input, whether spelled the same way, reached through a ./ alias, or reached through a symlink, and the input file keeps its original order untouched.</p></section>
+<section><h2>Desk seven: the harbourmaster farewell desk</h2><p>Entry one, the standalone LICENSE sheet: MIT wording, proprietor traced only as an outline of parts: a year span first, then a two word pen name, then a bracketed given name paired with one initial, then a bracketed handle that opens with an at sign. The line itself is not copied here.</p><p>Entry two, the log's own sign-off, preserved as printed in the README: Copyright (c) ShadowGuardAI. Here the house name appears stripped of its hyphen. The two entries stand side by side, the difference in spelling is visible, and no editorial hand smooths that difference away. A correction labelled as a correction would read: Copyright (c) ShadowGuard-AI. Site correction.</p></section>
+<section><h2>The preserved README record</h2><pre>![Banner](banner.png)
 
-<main>
-  <section class="rail">
-    <nav aria-label="on this page">
-      <p class="mono"><a href="#run">Run it</a><br>
-      <a href="#files">The files</a><br>
-      <a href="#sheets">The sheets</a><br>
-      <a href="https://github.com/ShadowGuard-AI/dm-data-record-permutation">The repo</a></p>
-    </nav>
-    <div>
-      <p class="lede">Dm Data Record Permutation is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.</p>
-      <div class="grid">
-        <div class="card pop"><h3>What it is</h3>
-          <p>Dm Data Record Permutation: 5 files, 134 counted
-          lines across Python 115, Markdown 18, Text 1. One job, done in the
-          open, in files you can read.</p></div>
-        <div class="card pop"><h3>The biggest piece</h3>
-          <p><code>main.py</code> carries the most
-          lines. If the project grows, that file is where the growth
-          lands first, for better or worse.</p></div>
-        <div class="card pop"><h3>The honest gap</h3>
-          <p>No test files yet. That is the honest gap, and the roadmap in the visuals folder says what the first one should cover.</p></div>
-      </div>
-      <section id="run">
-        <h2>Run it</h2>
-        <p>The repo README has the exact commands for this one. The
-        shape is the shape for most of my projects: clone it, read the
-        top file first so you know what will happen, then run it on
-        something you do not mind breaking.</p>
-        <p class="mono">$ git clone https://github.com/ShadowGuard-AI/dm-data-record-permutation.git<br>$ cd dm-data-record-permutation</p>
-      </section>
-      
-  <section aria-label="real code">
-    <h2>The code, as it sits in the repo</h2>
-    <p>From <code>main.py</code>, line 9 on. I did
-    not tidy it for the page. What you see is what the file has.</p>
-    <pre class="code"><code>logging.basicConfig(level=logging.INFO, format=&#x27;%(asctime)s - %(levelname)s - %(message)s&#x27;)
+# dm-data-record-permutation
+Randomly reorders the rows (records) in a data file. This disrupts the original order, which may unintentionally reveal information or patterns, particularly when combined with other masking techniques. - Focused on Tools designed to generate or mask sensitive data with realistic-looking but meaningless values
 
-def setup_argparse():
-    &quot;&quot;&quot;
-    Sets up the argument parser for the command-line interface.
-    &quot;&quot;&quot;
-    parser = argparse.ArgumentParser(description=&quot;Randomly reorders the rows in a data file.&quot;)
-    parser.add_argument(&quot;input_file&quot;, help=&quot;Path to the input data file (e.g., CSV, Excel).&quot;)
-    parser.add_argument(&quot;output_file&quot;, help=&quot;Path to the output data file with permuted rows.&quot;)
-    parser.add_argument(&quot;--file_type&quot;, choices=[&#x27;csv&#x27;, &#x27;excel&#x27;], default=&#x27;csv&#x27;,
-                        help=&quot;Type of the input file (csv or excel). Default is csv.&quot;)
-    # BooleanOptionalAction keeps the documented default honest: the file is
-    # assumed to have a header unless --no-header is passed. The old store_true
-    # flag defaulted to False, so a plain run read the header as a data row,
-    # shuffled it into the output, and wrote integer column names instead.
-    parser.add_argument(&quot;--header&quot;, action=argparse.BooleanOptionalAction, default=True, help=&quot;Specify if the input file has a header row. If not specified, assume header exists (use --no-header for headerless files).&quot;)
-    parser.add_argument(&quot;--delimiter&quot;, type=str, default=&quot;,&quot;, help=&quot;Delimiter for CSV files. Default is &#x27;,&#x27;.&quot;) # Added delimiter option
-    
-    return parser.parse_args()
+## Install
+`git clone https://github.com/ShadowGuardAI/dm-data-record-permutation`
 
+## Usage
+`./dm-data-record-permutation [params]`
 
-def permute_data(input_file, output_file, file_type, header=True, delimiter=&quot;,&quot;):</code></pre>
-  </section>
-      <section id="files">
-        <h2>The files that matter</h2>
-        <table><tr><th>File</th><th>Lines</th></tr>
-        <tr><td><code>main.py</code></td><td>115</td></tr>
-        <tr><td><code>README.md</code></td><td>18</td></tr>
-        <tr><td><code>requirements.txt</code></td><td>1</td></tr>
-        <tr><td><code>banner.png</code></td><td>0</td></tr>
-        <tr><td><code>logo.png</code></td><td>0</td></tr>
-        </table>
-        <p>Names doing the work: <span class="mono">setup_argparse, permute_data, main</span>.</p>
-      </section>
-      <section id="sheets">
-        <h2>Drawn by hand</h2>
-        <p>I sketch my projects on notebook paper so I have to
-        understand them well enough to draw them. The full set,
-        with the counts and how they were counted, is the
-        <a href="https://github.com/ShadowGuard-AI/dm-data-record-permutation/tree/main/dm-data-record-permutation-Visuals">dm-data-record-permutation-Visuals</a>
-        folder in the repo. Nothing is drawn over the binder holes.
-        That is a rule, not a style.</p>
-        <div class="shots">
-          <img src="assets/architecture.png" alt="Hand drawn architecture sheet for Dm Data Record Permutation">
-          <img src="assets/flowchart.png" alt="Hand drawn flowchart sheet for Dm Data Record Permutation">
-          <img src="assets/product-map.png" alt="Hand drawn product map sheet for Dm Data Record Permutation">
-        </div>
-      </section>
-    </div>
-  </section>
-</main>
-<footer>
-  <p>Dm Data Record Permutation is one of my projects. This page was written
-  from the repo itself on 2026-10-30: the counts are the
-  repo's counts, the code is the repo's code, and the gaps are the
-  repo's gaps.</p>
-</footer>
-</body>
-</html>
+## Parameters
+- `--file_type`: No description provided
+- `--header`: Specify if the input file has a header row. If not specified, assume header exists.
+- `--delimiter`: Delimiter for CSV files. Default is
+- `--seed`: Seed for a reproducible shuffle. If not specified, each run shuffles from fresh system randomness and produces a different order.
+
+## Shuffle and output path
+
+By default each run is a fresh random shuffle, so the permutation is not fixed and cannot be inverted from the row count alone. Pass --seed with an integer to make a run reproducible: two runs with the same seed and the same input produce identical output.
+
+The output file must not be the input file. If the resolved output path equals the resolved input path, the run refuses at exit 1 before any write, including when the same file is named through a ./ alias or a symlink.
+
+## License
+Copyright (c) ShadowGuardAI</pre></section>
+</main></body></html>
