@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="36" viewBox="0 0 1200 36" role="img" aria-label="Full obelisk shadow separator">
+<line x1="20" y1="18" x2="1180" y2="18" stroke="#3b3f4a" stroke-width="2"/>
+<polygon points="600,2 640,34 560,34" fill="#244234" opacity="0.5"/>
+<g><rect x="120" y="14" width="8" height="8" fill="#a52d26"/><rect x="148" y="14" width="8" height="8" fill="#946a34"/><rect x="176" y="14" width="8" height="8" fill="#f2eee6" stroke="#3b3f4a"/><rect x="204" y="14" width="8" height="8" fill="#244234"/><rect x="232" y="14" width="8" height="8" fill="#946a34"/><rect x="960" y="14" width="8" height="8" fill="#946a34"/><rect x="988" y="14" width="8" height="8" fill="#244234"/><rect x="1016" y="14" width="8" height="8" fill="#f2eee6" stroke="#3b3f4a"/><rect x="1044" y="14" width="8" height="8" fill="#946a34"/><rect x="1072" y="14" width="8" height="8" fill="#a52d26"/></g>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-label="Alexandria Lighthouse Archive scene in three bands">
+<rect width="1200" height="360" fill="#f2eee6"/>
+<rect x="0" y="0" width="1200" height="120" fill="#d8d2c4"/>
+<g fill="#f2eee6" stroke="#786f60" stroke-width="1">
+<polygon points="0,80 90,80 78,110 0,110"/><polygon points="100,80 190,80 178,110 88,110" fill="#c4bcac"/>
+<polygon points="200,80 290,80 278,110 188,110"/><polygon points="300,80 390,80 378,110 288,110" fill="#c4bcac"/>
+<polygon points="400,80 490,80 478,110 388,110"/><polygon points="500,80 590,80 578,110 488,110" fill="#c4bcac"/>
+<polygon points="600,80 690,80 678,110 588,110"/><polygon points="700,80 790,80 778,110 688,110" fill="#c4bcac"/>
+<polygon points="800,80 890,80 878,110 788,110"/><polygon points="900,80 990,80 978,110 888,110" fill="#c4bcac"/>
+<polygon points="1000,80 1090,80 1078,110 988,110"/><polygon points="1100,80 1200,80 1200,110 1088,110" fill="#c4bcac"/>
+</g>
+<rect x="0" y="10" width="1200" height="46" fill="#4a4c46"/>
+<polygon points="820,56 900,18 980,56" fill="#383a36"/>
+<ellipse cx="760" cy="30" rx="14" ry="30" fill="#244234"/>
+<rect x="0" y="0" width="180" height="120" fill="#e8b25c" opacity="0.35">
+<animate attributeName="x" values="0;1020;0" dur="14s" repeatCount="indefinite"/>
+</rect>
+<rect x="0" y="120" width="1200" height="120" fill="#e6dfd0"/>
+<rect x="60" y="170" width="360" height="56" fill="#6e5232" stroke="#946a34" stroke-width="3"/>
+<rect x="60" y="170" width="360" height="12" fill="#a52d26"/>
+<rect x="84" y="190" width="26" height="20" fill="#f2eee6"/><rect x="122" y="190" width="26" height="20" fill="#a52d26"/>
+<rect x="160" y="190" width="26" height="20" fill="#946a34"/><rect x="198" y="190" width="26" height="20" fill="#244234"/>
+<rect x="300" y="190" width="26" height="20" fill="#f2eee6" opacity="0">
+<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.45;0.55;1" dur="8s" repeatCount="indefinite"/></rect>
+<path d="M520 150 q30 -18 52 0 l-10 26 q-22 10 -42 -4 z" fill="#d9a066">
+<animateTransform attributeName="transform" type="translate" values="0,0; -190,28; 0,0" keyTimes="0;0.5;1" dur="8s" repeatCount="indefinite"/></path>
+<rect x="700" y="160" width="220" height="76" fill="#c49e60" stroke="#946a34" stroke-width="3"/>
+<rect x="714" y="174" width="192" height="48" fill="#dec48c"/>
+<line x1="730" y1="198" x2="890" y2="198" stroke="#946a34" stroke-width="4">
+<animate attributeName="x2" values="760;890;760" dur="6s" repeatCount="indefinite"/></line>
+<rect x="980" y="170" width="140" height="18" fill="#c4bcac" stroke="#946a34"/>
+<circle cx="1000" cy="205" r="7" fill="#946a34"/><circle cx="1030" cy="205" r="7" fill="#a52d26"/><circle cx="1060" cy="205" r="7" fill="#244234"/>
+<rect x="0" y="240" width="1200" height="120" fill="#d8d2c4"/>
+<polygon points="540,252 1200,240 1200,286 548,292" fill="#e8b25c" opacity="0.4">
+<animateTransform attributeName="transform" type="rotate" values="-3 540 272; 4 540 272; -3 540 272" dur="11s" repeatCount="indefinite"/></polygon>
+<rect x="430" y="258" width="110" height="78" fill="#f2eee6" stroke="#946a34" stroke-width="6"/>
+<ellipse cx="485" cy="297" rx="16" ry="26" fill="#e8b25c"/>
+<polygon points="418,258 552,258 520,232 450,232" fill="#946a34"/>
+<rect x="414" y="336" width="142" height="10" fill="#a52d26"/>
+<path d="M552 268 q44 14 44 42 q0 28 -44 40" fill="none" stroke="#946a34" stroke-width="9"/>
+</svg>
